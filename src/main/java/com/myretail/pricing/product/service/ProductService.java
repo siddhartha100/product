@@ -59,7 +59,7 @@ public class ProductService {
 	}
 
 	// Update product information to database, product id is the key
-	public ProductResponse updateProductCost(ProductResponse productResponse) {
+	public ProductResponse updateProductInformation(ProductResponse productResponse) {
 		return this.productRepository.save(productResponse);
 	}
 

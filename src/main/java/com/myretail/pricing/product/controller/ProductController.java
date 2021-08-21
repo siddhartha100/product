@@ -53,12 +53,12 @@ public class ProductController {
 
 		// Call service layer
 		long startTime = System.nanoTime();
-		ProductResponse response = productService.updateProductCost(product);
+		ProductResponse response = productService.updateProductInformation(product);
 		long responseTime = System.nanoTime() - startTime / 1000000;
 		LOGGER.info("Product update service response time for product {} : {} milli seconds", productId, responseTime);
 
 		// Return response
-		return response != null ? new ResponseEntity<>(response, HttpStatus.ACCEPTED) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		return response.get_id() != null ? new ResponseEntity<>(response, HttpStatus.ACCEPTED) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
 	}
 

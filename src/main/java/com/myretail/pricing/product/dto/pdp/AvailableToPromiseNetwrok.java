@@ -14,4 +14,5 @@ import lombok.NoArgsConstructor;
 public class AvailableToPromiseNetwrok {
 
 	private String productId;
+
 }

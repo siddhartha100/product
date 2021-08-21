@@ -2,7 +2,6 @@ package com.myretail.pricing.product.controller;
 
 import com.myretail.pricing.product.dto.CurrentPrice;
 import com.myretail.pricing.product.dto.ProductResponse;
-import com.myretail.pricing.product.exception.InputValidationException;
 import com.myretail.pricing.product.service.ProductService;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,8 +15,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import static org.mockito.Matchers.anyInt;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -58,7 +55,7 @@ public class ProductControllerTest {
 	}
 
 	@Test
-	public void testProductUpdateResponseAccepted() throws Exception{
+	public void testProductUpdateResponseAccepted() throws Exception {
 		ProductResponse request = getMockProductResponse();
 		ProductResponse response = new ProductResponse();
 		String productResponseString = "{\"name\":\"testItem\",\"id\":1,\"current_price\":{\"value\":10.01,\"currency_code\":\"USD\"}}";
@@ -70,7 +67,7 @@ public class ProductControllerTest {
 	}
 
 	@Test
-	public void testProductUpdateInternalServerError() throws Exception{
+	public void testProductUpdateInternalServerError() throws Exception {
 		ProductResponse productResponse = getMockProductResponse();
 		String productResponseString = "{\"name\":\"testItem\",\"id\":1,\"current_price\":{\"value\":10.01,\"currency_code\":\"USD\"}}";
 		Mockito.when(this.productService.updateProductInformation(productResponse)).thenReturn(productResponse);
@@ -81,11 +78,11 @@ public class ProductControllerTest {
 	}
 
 	@Test
-	public void testProductUpdateBadRequest() throws Exception{
+	public void testProductUpdateBadRequest() throws Exception {
 		ProductResponse productResponse = getMockProductResponse();
 		String productResponseString = "{\"name\":\"testItem\",\"id\":1,\"current_price\":{\"value\":10.01,\"currency_code\":\"USD\"}}";
 		Mockito.when(this.productService.updateProductInformation(productResponse)).thenReturn(productResponse);
-		this.mvc.perform(put("/v1/products/{id}",2)
+		this.mvc.perform(put("/v1/products/{id}", 2)
 				.accept(MediaType.APPLICATION_JSON_VALUE)
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.content(productResponseString)).andExpect(status().isBadRequest());

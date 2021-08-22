@@ -34,7 +34,7 @@ public class ProductController {
 		// Call service layer
 		long startTime = System.nanoTime();
 		ProductResponse response = productService.searchProductById(productId);
-		long responseTime = System.nanoTime() - startTime / 1000000;
+		long responseTime = (System.nanoTime() - startTime) / 1000000;
 		LOGGER.info("Product search service response time for product {} : {} milli seconds", productId, responseTime);
 
 		// Return response
@@ -53,7 +53,7 @@ public class ProductController {
 		// Call service layer
 		long startTime = System.nanoTime();
 		ProductResponse response = productService.updateProductInformation(product);
-		long responseTime = System.nanoTime() - startTime / 1000000;
+		long responseTime = (System.nanoTime() - startTime) / 1000000;
 		LOGGER.info("Product update service response time for product {} : {} milli seconds", productId, responseTime);
 
 		// Return response

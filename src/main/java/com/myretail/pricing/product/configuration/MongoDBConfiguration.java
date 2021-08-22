@@ -25,7 +25,6 @@ public class MongoDBConfiguration {
 		MappingMongoConverter converter = new MappingMongoConverter(dbRefResolver, mongoMappingContext);
 		converter.setTypeMapper(new DefaultMongoTypeMapper(null));
 		return converter;
-
 	}
 
 }

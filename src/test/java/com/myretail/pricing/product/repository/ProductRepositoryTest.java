@@ -5,12 +5,13 @@ import com.myretail.pricing.product.dto.ProductResponse;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataMongoTest
@@ -25,7 +26,7 @@ public class ProductRepositoryTest {
 		ProductResponse dto = getMockProductResponse();
 		ProductResponse response = productRepository.save(dto);
 		assertNotNull(response);
-		assertEquals(response.get_id(),Integer.valueOf(1));
+		assertEquals(response.get_id(), Integer.valueOf(1));
 	}
 
 	private ProductResponse getMockProductResponse() {

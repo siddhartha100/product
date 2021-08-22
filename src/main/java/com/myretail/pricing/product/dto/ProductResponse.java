@@ -17,13 +17,15 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @Document(collection = "products")
 public class ProductResponse {
+
 	@Id
 	@JsonProperty("id")
-	@NotNull(message ="Product key cannot be null. Key must be an Integer.")
+	@NotNull(message = "Product key cannot be null. Key must be an Integer.")
 	private Integer _id;
-	@NotBlank(message ="Product name cannot be null or empty.")
+	@NotBlank(message = "Product name cannot be null or empty.")
 	private String name;
 	@JsonProperty("current_price")
-	@NotNull(message ="Price information cannot be null.")
+	@NotNull(message = "Price information cannot be null.")
 	private CurrentPrice currentPrice;
+
 }

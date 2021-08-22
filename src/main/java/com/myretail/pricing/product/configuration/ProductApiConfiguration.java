@@ -10,8 +10,10 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 public class ProductApiConfiguration {
+
 	private String baseurl;
 	private String path;
 	private String excludes;
 	private String httpMethod;
+
 }

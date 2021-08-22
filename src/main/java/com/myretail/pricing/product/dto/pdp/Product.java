@@ -11,8 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
+
 	@JsonProperty("available_to_promise_network")
 	private AvailableToPromiseNetwork availableToPromiseNetwork;
 	private Item item;
+
 }
 

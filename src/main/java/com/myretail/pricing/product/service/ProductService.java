@@ -34,7 +34,6 @@ public class ProductService {
 
 	// Search product information by product id
 	public ProductResponse searchProductById(Integer productId) throws ExecutionException, InterruptedException {
-
 		ProductResponse response = new ProductResponse();
 
 		// Fetch product information asynchronously from external api
@@ -52,10 +51,7 @@ public class ProductService {
 		wrapper.get();
 
 		// Create response object and return
-		createProductResponse(response, productCostAttributes.get(), productAllAttributes.get());
-
-		return response;
-
+		return createProductResponse(response, productCostAttributes.get(), productAllAttributes.get());
 	}
 
 	// Update product information to database, product id is the key
@@ -64,25 +60,28 @@ public class ProductService {
 	}
 
 	// Create a response object for product search api
-	private void createProductResponse(ProductResponse response, Optional<ProductResponse> productCostAttributes, TcinResponse productAllAttributes) {
-
+	private ProductResponse createProductResponse(ProductResponse response, Optional<ProductResponse> productCostAttributes, TcinResponse productAllAttributes) {
 		//update other product attributes
 		if (productAllAttributes != null && productAllAttributes.getProduct() != null) {
 			response.set_id(Integer.parseInt(productAllAttributes.getProduct().getAvailableToPromiseNetwork().getProductId()));
 			response.setName(productAllAttributes.getProduct().getItem().getProductDescription().getTitle());
 		} else {
-			// No need to process since key is not available
-			return;
+			return response; // No need to process price info since key is not available
 		}
 
 		// update price information
-		CurrentPrice currentPrice = new CurrentPrice();
+		updatePrice(response, productCostAttributes);
+		return response;
+	}
+
+	// Update price information in response object
+	private void updatePrice(ProductResponse response, Optional<ProductResponse> productCostAttributes) {
 		if (productCostAttributes.isPresent()) {
+			CurrentPrice currentPrice = new CurrentPrice();
 			currentPrice.setCurrencyCode(productCostAttributes.get().getCurrentPrice().getCurrencyCode());
 			currentPrice.setValue(productCostAttributes.get().getCurrentPrice().getValue());
 			response.setCurrentPrice(currentPrice);
 		}
-
 	}
 
 	// Calling the external api to find product information
@@ -91,6 +90,7 @@ public class ProductService {
 		ResponseEntity<TcinResponse> response = null;
 		TcinResponse data = new TcinResponse();
 
+		// Generate request
 		String url = getUrl(apiConfiguration, productId);
 		HttpEntity<String> requestEntity = new HttpEntity<>(null, getHeaders());
 

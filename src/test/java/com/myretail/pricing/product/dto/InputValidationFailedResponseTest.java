@@ -11,7 +11,7 @@ public class InputValidationFailedResponseTest {
 	private InputValidationFailedResponse inputValidationFailedResponse;
 
 	@Before
-	public void init(){
+	public void init() {
 		inputValidationFailedResponse = new InputValidationFailedResponse();
 		inputValidationFailedResponse.setInput(-1);
 		inputValidationFailedResponse.setMessage("ERROR");
@@ -19,10 +19,10 @@ public class InputValidationFailedResponseTest {
 	}
 
 	@Test
-	public void testInputValidationFailedResponse(){
+	public void testInputValidationFailedResponse() {
 		assertNotNull(inputValidationFailedResponse);
 		assertEquals(inputValidationFailedResponse.getInput(), Integer.valueOf(-1));
-		assertEquals(inputValidationFailedResponse.getMessage(),"ERROR");
+		assertEquals(inputValidationFailedResponse.getMessage(), "ERROR");
 		assertEquals(inputValidationFailedResponse.getErrorCode(), Integer.valueOf(1000));
 		assertNotNull(inputValidationFailedResponse.toString());
 	}

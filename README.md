@@ -26,12 +26,13 @@ Endpoints:
    "currency_code": "USD"
    }
    }
-- Successful Http response code - 200
+- Response code - 200 (if item found)
+- Response code - 404 ()
 
 2. Update product information to database
 - Url - {baseUrl}/products/{product-id}
 - Http Method - PUT
-- Request  - {
+- Sample Request  - {
   "name": "The Big Lebowski",
   "id": 13860433,
   "current_price": {
@@ -39,7 +40,7 @@ Endpoints:
   "currency_code": "INR"
   }
   }
-- Response - {
+- Sample Response - {
   "name": "The Big Lebowski",
   "id": 13860433,
   "current_price": {

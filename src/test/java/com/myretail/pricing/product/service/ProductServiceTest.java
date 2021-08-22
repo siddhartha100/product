@@ -46,7 +46,7 @@ public class ProductServiceTest {
 	}
 
 	@Test
-	public void testProductService() throws ExecutionException, InterruptedException {
+	public void testProductSearchService() throws ExecutionException, InterruptedException {
 		Optional<ProductResponse> response = getMockProductResponse();
 		when(apiConfiguration.getBaseurl()).thenReturn("base");
 		when(apiConfiguration.getExcludes()).thenReturn("exclude");

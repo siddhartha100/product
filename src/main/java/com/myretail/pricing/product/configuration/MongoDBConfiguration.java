@@ -18,6 +18,7 @@ public class MongoDBConfiguration {
 	@Autowired
 	MongoMappingContext mongoMappingContext;
 
+	// Configuration to remove _class field in mongo db
 	@Bean
 	public MappingMongoConverter mappingMongoConverter() {
 

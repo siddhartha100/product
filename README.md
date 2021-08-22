@@ -82,10 +82,11 @@ E. Running and testing the application
 	  - Run -> java -jar -Dspring.profiles.active=dev -Dspring.data.mongodb.username=myusername -Dspring.data.mongodb.password=myPassWord1! product-0.0.1-SNAPSHOT.jar (For starting dev profile)
 	  - Application will start if all the previous configurations are correct
 
-5. Forward the application logs in promethus and build Grafana dashboard
+5. Forward the application metrics to promethus and build Grafana dashboard
    - I have used local Prometheus Docker container to get the application logs. In a production environment, this is usually a managed service where we have to forward application logs
    - Prometheus configuration file prometheus.yml is kept in src/main/resources folder and configured for local testing.
    - Run command -> docker run 9090:9090 -v /path/to/prometheus.yml prom/prometheus to run a local prometheus container. Dashboard is available at http://127.0.0.1:9090
    - Run command -> docker run -d --name=grafana -p 3000:3000 graphana/graphana to run a local Graphana container. Dashboard is available at http://127.0.0.1:3000
    - Login to Grafana using admin,admin default credentials. Go to configuration and add Prometheus as data source. Provive http url settings as http://127.0.0.1:9090 in the form and save. 
      Now we can create different dashboards with Promethus metrics. 
+	 	 

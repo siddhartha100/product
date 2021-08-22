@@ -74,7 +74,7 @@ public class ProductControllerTest {
 		this.mvc.perform(put("/v1/products/1")
 				.accept(MediaType.APPLICATION_JSON_VALUE)
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
-				.content(productResponseString)).andExpect(status().isAccepted()).andExpect(content().string(productResponseString));
+				.content(productResponseString)).andExpect(status().isCreated()).andExpect(content().string(productResponseString));
 	}
 
 	@Test

@@ -57,7 +57,7 @@ public class ProductController {
 		LOGGER.info("Product update service response time for product {} : {} milli seconds", productId, responseTime);
 
 		// Return response
-		return response.get_id() != null ? new ResponseEntity<>(response, HttpStatus.ACCEPTED) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		return response.get_id() != null ? new ResponseEntity<>(response, HttpStatus.CREATED) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 }

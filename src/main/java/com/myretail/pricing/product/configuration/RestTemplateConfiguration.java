@@ -1,6 +1,5 @@
 package com.myretail.pricing.product.configuration;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
@@ -17,16 +16,14 @@ public class RestTemplateConfiguration {
 	private static final Integer READ_TIME_OUT = 3000;
 
 	@Bean
-	public RestTemplate restTemplate(){
+	public RestTemplate restTemplate() {
 		SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
 		factory.setConnectTimeout(CONNECTION_TIME_OUT);
 		factory.setReadTimeout(READ_TIME_OUT);
 		RestTemplate restTemplate = new RestTemplate(factory);
-		restTemplate.getMessageConverters().add(0,createMappingJacksonHttpMessageConverter());
+		restTemplate.getMessageConverters().add(0, createMappingJacksonHttpMessageConverter());
 		return restTemplate;
 	}
-
-
 
 	private ObjectMapper createObjectMapper() {
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -40,4 +37,5 @@ public class RestTemplateConfiguration {
 		converter.setObjectMapper(createObjectMapper());
 		return converter;
 	}
+
 }

@@ -39,7 +39,6 @@ public class ProductController {
 
 		// Return response
 		return response.get_id() != null ? new ResponseEntity<>(response, HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
 	}
 
 	@PutMapping(value = "/products/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -59,7 +58,6 @@ public class ProductController {
 
 		// Return response
 		return response.get_id() != null ? new ResponseEntity<>(response, HttpStatus.ACCEPTED) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-
 	}
 
 }

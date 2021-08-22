@@ -12,9 +12,11 @@ import javax.validation.constraints.PositiveOrZero;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CurrentPrice {
-	@PositiveOrZero(message ="Product value must be positive or zero.")
+
+	@PositiveOrZero(message = "Product value must be positive or zero.")
 	private Double value;
 	@JsonProperty("currency_code")
-	@NotBlank(message ="Currency code cannot be null or empty.")
+	@NotBlank(message = "Currency code cannot be null or empty.")
 	private String currencyCode;
+
 }

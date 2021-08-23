@@ -3,6 +3,7 @@ package com.myretail.pricing.product.controller;
 import com.myretail.pricing.product.dto.ProductResponse;
 import com.myretail.pricing.product.exception.InputValidationException;
 import com.myretail.pricing.product.service.ProductService;
+import com.myretail.pricing.product.utility.InputValidation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -23,9 +24,12 @@ public class ProductController {
 
 	private static final Logger LOGGER = LogManager.getLogger(ProductController.class);
 	private final ProductService productService;
+	private final InputValidation inputValidation;
 
-	public ProductController(ProductService productService) {
+	public ProductController(ProductService productService, InputValidation inputValidation) {
+
 		this.productService = productService;
+		this.inputValidation = inputValidation;
 	}
 
 	@GetMapping("/product/{id}")
@@ -46,7 +50,7 @@ public class ProductController {
 			@PathVariable("id") @NotNull @Positive Integer productId, @Valid @RequestBody ProductResponse product) {
 
 		// Input validation
-		if (productId.compareTo(product.get_id()) != 0) {
+		if (!inputValidation.requestValidation(productId, product)) {
 			throw new InputValidationException(productId);
 		}
 

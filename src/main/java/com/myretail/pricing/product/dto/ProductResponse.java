@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "products")
+@Document(collection = "product")
 public class ProductResponse {
 
 	@Id

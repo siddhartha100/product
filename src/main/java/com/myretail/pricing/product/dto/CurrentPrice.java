@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PositiveOrZero;
@@ -11,6 +12,7 @@ import javax.validation.constraints.PositiveOrZero;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Document
 public class CurrentPrice {
 
 	@PositiveOrZero(message = "Product value must be positive or zero.")

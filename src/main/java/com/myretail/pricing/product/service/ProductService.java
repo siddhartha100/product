@@ -98,7 +98,7 @@ public class ProductService {
 		try {
 			response = restTemplate.exchange(url, HttpMethod.GET, requestEntity, TcinResponse.class);
 		} catch (HttpClientErrorException | HttpServerErrorException e) {
-			LOGGER.info("Exception occurred during product search of product id {}. Error code: {}", productId, e.getStatusCode());
+			LOGGER.debug("Exception occurred during product search of product id {}. Error code: {}", productId, e.getStatusCode());
 		}
 
 		// Get the response if response is available
